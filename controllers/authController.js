@@ -97,7 +97,7 @@ function validateAuth(req, res, next) {
   console.log("validateAuth middleware called");
   passport.authenticate("jwt", { session: false }, (err, user) => {
     if (!user || err) {
-      console.log("Unauthorized request"); // Log pentru debugging
+      console.log("Unauthorized request");
       return res.status(401).json({
         status: "error",
         code: 401,
@@ -105,7 +105,7 @@ function validateAuth(req, res, next) {
         data: "Unauthorized",
       });
     }
-    console.log("User authenticated:", user); // Log utilizator autentificat
+    console.log("User authenticated:", user);
     req.user = user;
     next();
   })(req, res, next);
